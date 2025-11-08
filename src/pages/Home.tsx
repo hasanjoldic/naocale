@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import reactLogo from '../assets/react.svg';
-import viteLogo from '/vite.svg';
-import '../App.css';
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import reactLogo from "../assets/react.svg";
+import viteLogo from "/vite.svg";
+import "../App.css";
 
-function Home() {
+export default function Home() {
   const [count, setCount] = useState(0);
 
   return (
@@ -26,8 +26,10 @@ function Home() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <nav style={{ marginTop: '2rem' }}>
-        <Link to="/about" style={{ marginRight: '1rem' }}>Go to About</Link>
+      <nav style={{ marginTop: "2rem" }}>
+        <Link to="/about" style={{ marginRight: "1rem" }}>
+          Go to About
+        </Link>
       </nav>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
@@ -35,5 +37,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;
