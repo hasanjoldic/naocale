@@ -1,19 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Check, Eye, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Dialog from '@radix-ui/react-dialog';
 import { cn } from '../lib/utils';
-
-interface Frame {
-  id: number;
-  name: string;
-  image: string;
-  shape: string;
-  color: string;
-  price: number;
-  description: string;
-  features: string[];
-}
+import { frames } from '../data/frames';
+import type { Frame } from '../data/frames';
 
 interface FrameCatalogProps {
   onSelectionChange?: (selectedIds: number[]) => void;
@@ -25,158 +17,12 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  const frames: Frame[] = [
-    {
-      id: 1,
-      name: 'Moderna Crna',
-      image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=400&auto=format&fit=crop',
-      shape: 'Pravougaonik',
-      color: 'Crna',
-      price: 149,
-      description: 'Elegantne pravougaone naočale sa crnim okvirom. Savršen izbor za profesionalan izgled.',
-      features: ['Lagane i izdržljive', 'Hipoalergenske', 'UV zaštita'],
-    },
-    {
-      id: 2,
-      name: 'Retro Okrugla',
-      image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400&auto=format&fit=crop',
-      shape: 'Okrugla',
-      color: 'Zlatna',
-      price: 179,
-      description: 'Vintage okrugle naočale sa zlatnim okvirom. Idealne za kreativne i moderne ličnosti.',
-      features: ['Retro dizajn', 'Premium materijali', 'Fleksibilne'],
-    },
-    {
-      id: 3,
-      name: 'Klasik Tortoise',
-      image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=400&auto=format&fit=crop',
-      shape: 'Aviator',
-      color: 'Tortoise',
-      price: 159,
-      description: 'Klasične aviator naočale sa tortoise dezenom. Bezvremenska elegancija.',
-      features: ['Klasičan stil', 'Udobne', 'Visoka kvaliteta'],
-    },
-    {
-      id: 4,
-      name: 'Elegantna Plava',
-      image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=400&auto=format&fit=crop',
-      shape: 'Cat-eye',
-      color: 'Plava',
-      price: 169,
-      description: 'Sofisticirane cat-eye naočale u plavoj boji. Dodajte šmek vašem stilu.',
-      features: ['Moderan dizajn', 'Lagane', 'Stilske'],
-    },
-    {
-      id: 5,
-      name: 'Sportska Siva',
-      image: 'https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=400&auto=format&fit=crop',
-      shape: 'Pravougaonik',
-      color: 'Siva',
-      price: 139,
-      description: 'Sportske pravougaone naočale u sivoj boji. Savršene za aktivan život.',
-      features: ['Sportski dizajn', 'Otporne', 'Fleksibilne'],
-    },
-    {
-      id: 6,
-      name: 'Vintage Braon',
-      image: 'https://images.unsplash.com/photo-1509695507497-903c140c4e67?q=80&w=400&auto=format&fit=crop',
-      shape: 'Okrugla',
-      color: 'Braon',
-      price: 189,
-      description: 'Vintage okrugle naočale u braon boji. Za ljubitelje retro stila.',
-      features: ['Vintage stil', 'Premium kvalitet', 'Unikatne'],
-    },
-    {
-      id: 7,
-      name: 'Minimalist Metal',
-      image: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=400&auto=format&fit=crop',
-      shape: 'Pravougaonik',
-      color: 'Srebrna',
-      price: 199,
-      description: 'Minimalističke metalne naočale sa tankim okvirom. Jednostavna elegancija.',
-      features: ['Metalni okvir', 'Elegantne', 'Izdržljive'],
-    },
-    {
-      id: 8,
-      name: 'Bold Cat-Eye',
-      image: 'https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=400&auto=format&fit=crop',
-      shape: 'Cat-eye',
-      color: 'Crvena',
-      price: 175,
-      description: 'Hrabre cat-eye naočale u crvenoj boji. Za one koji vole da se istaknu.',
-      features: ['Statement komad', 'Intenzivna boja', 'Moderan dizajn'],
-    },
-    {
-      id: 9,
-      name: 'Wayfare Classic',
-      image: 'https://images.unsplash.com/photo-1501696461415-6bd6660c6742?q=80&w=400&auto=format&fit=crop',
-      shape: 'Wayfare',
-      color: 'Crna',
-      price: 159,
-      description: 'Klasične wayfare naočale u crnoj boji. Bezvremenska ikona stila.',
-      features: ['Klasik dizajn', 'Univerzalne', 'Trajne'],
-    },
-    {
-      id: 10,
-      name: 'Clear Frame',
-      image: 'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?q=80&w=400&auto=format&fit=crop',
-      shape: 'Okrugla',
-      color: 'Prozirna',
-      price: 145,
-      description: 'Prozirne okrugle naočale. Suptilan i moderan izbor.',
-      features: ['Proziran okvir', 'Moderno', 'Lagane'],
-    },
-    {
-      id: 11,
-      name: 'Double Bridge',
-      image: 'https://images.unsplash.com/photo-1609783758745-5f2f78b97d65?q=80&w=400&auto=format&fit=crop',
-      shape: 'Aviator',
-      color: 'Zlatna',
-      price: 195,
-      description: 'Aviator sa duplim mostom. Premium kvalitet i moderan izgled.',
-      features: ['Dupli most', 'Metalni okvir', 'Premium'],
-    },
-    {
-      id: 12,
-      name: 'Square Bold',
-      image: 'https://images.unsplash.com/photo-1628114912544-f0c7f5c1c7ce?q=80&w=400&auto=format&fit=crop',
-      shape: 'Kvadrat',
-      color: 'Crna',
-      price: 169,
-      description: 'Hrabri kvadratni okvir. Statement za savremeni izgled.',
-      features: ['Smeli dizajn', 'Savremeno', 'Kvalitetno'],
-    },
-    {
-      id: 13,
-      name: 'Geometric Hex',
-      image: 'https://images.unsplash.com/photo-1580833129824-c5c27e3f3d91?q=80&w=400&auto=format&fit=crop',
-      shape: 'Šestougao',
-      color: 'Zlatna',
-      price: 185,
-      description: 'Geometrijske šestougaone naočale. Jedinstven i moderan dizajn.',
-      features: ['Geometrijski dizajn', 'Unikatne', 'Moderan stil'],
-    },
-    {
-      id: 14,
-      name: 'Clubmaster Style',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=400&auto=format&fit=crop',
-      shape: 'Clubmaster',
-      color: 'Tortoise/Zlatna',
-      price: 179,
-      description: 'Clubmaster stil sa kombinacijom tortoise i zlatne. Klasična sofisticiranost.',
-      features: ['Retro-moderan', 'Premium materijali', 'Ikonski dizajn'],
-    },
-    {
-      id: 15,
-      name: 'Thin Rim Square',
-      image: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=400&auto=format&fit=crop',
-      shape: 'Kvadrat',
-      color: 'Srebrna',
-      price: 155,
-      description: 'Tanki kvadratni okvir u srebrnoj boji. Minimalistički elegantno.',
-      features: ['Tanak okvir', 'Elegantno', 'Lako'],
-    },
-  ];
+  useEffect(() => {
+    const saved = localStorage.getItem('selectedFrames');
+    if (saved) {
+      setSelectedFrames(JSON.parse(saved));
+    }
+  }, []);
 
   const totalPages = Math.ceil(frames.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -260,13 +106,13 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-950/30 via-transparent to-transparent opacity-60"></div>
 
                   {/* Quick View Button */}
-                  <button
-                    onClick={() => setDialogFrame(frame)}
+                  <Link
+                    to={`/proizvod/${frame.id}`}
                     className="absolute inset-0 bg-teal-900/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                   >
                     <Eye className="w-7 h-7 text-white" />
                     <span className="ml-2 text-white font-medium">Pogledaj detalje</span>
-                  </button>
+                  </Link>
 
                   {/* Checkbox */}
                   <div className="absolute top-4 right-4">
@@ -311,12 +157,12 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                   </p>
 
                   {/* View Details Button */}
-                  <button
-                    onClick={() => setDialogFrame(frame)}
-                    className="w-full mb-2 py-2 px-4 rounded text-sm font-medium text-white border border-white/30 hover:bg-teal-900/40 hover:border-white/50 transition-colors"
+                  <Link
+                    to={`/proizvod/${frame.id}`}
+                    className="block w-full mb-2 py-2 px-4 rounded text-sm font-medium text-white border border-white/30 hover:bg-teal-900/40 hover:border-white/50 transition-colors text-center"
                   >
                     Pogledaj detalje
-                  </button>
+                  </Link>
 
                   {/* Selection Status */}
                   <p className="text-center text-xs text-white/60">

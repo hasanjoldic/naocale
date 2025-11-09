@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ShoppingCart, Menu } from 'lucide-react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { cn } from '../lib/utils';
@@ -8,9 +9,9 @@ interface HeaderProps {
 
 export default function Header({ cartCount }: HeaderProps) {
   const navLinks = [
-    { label: 'Katalog', href: '#katalog' },
-    { label: 'Kako funkcioniše', href: '#kako-funkcionise' },
-    { label: 'Moje narudžbe', href: '#narudzbe' },
+    { label: 'Katalog', href: '/katalog', isRoute: true },
+    { label: 'Kako funkcioniše', href: '#kako-funkcionise', isRoute: false },
+    { label: 'Moje narudžbe', href: '#narudzbe', isRoute: false },
   ];
 
   return (
@@ -19,21 +20,31 @@ export default function Header({ cartCount }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-serif font-normal text-white tracking-wide">
+            <Link to="/" className="text-2xl font-serif font-normal text-white tracking-wide">
               Naočale.ba
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-white/90 hover:text-white transition-colors text-sm font-normal"
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-white/90 hover:text-white transition-colors text-sm font-normal"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-white/90 hover:text-white transition-colors text-sm font-normal"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </nav>
 
@@ -71,16 +82,29 @@ export default function Header({ cartCount }: HeaderProps) {
                 >
                   {navLinks.map((link) => (
                     <DropdownMenu.Item key={link.label} asChild>
-                      <a
-                        href={link.href}
-                        className={cn(
-                          "block px-3 py-2 text-white/90 hover:text-white",
-                          "hover:bg-teal-800/50",
-                          "transition-colors outline-none cursor-pointer text-sm"
-                        )}
-                      >
-                        {link.label}
-                      </a>
+                      {link.isRoute ? (
+                        <Link
+                          to={link.href}
+                          className={cn(
+                            "block px-3 py-2 text-white/90 hover:text-white",
+                            "hover:bg-teal-800/50",
+                            "transition-colors outline-none cursor-pointer text-sm"
+                          )}
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className={cn(
+                            "block px-3 py-2 text-white/90 hover:text-white",
+                            "hover:bg-teal-800/50",
+                            "transition-colors outline-none cursor-pointer text-sm"
+                          )}
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </DropdownMenu.Item>
                   ))}
                 </DropdownMenu.Content>
