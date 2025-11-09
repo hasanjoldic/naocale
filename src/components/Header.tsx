@@ -51,14 +51,14 @@ export default function Header({ cartCount }: HeaderProps) {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
             {/* Shopping Cart */}
-            <button className="relative p-2 rounded hover:bg-teal-900/50 transition-colors">
+            <Link to="/korpa" className="relative p-2 rounded hover:bg-teal-900/50 transition-colors">
               <ShoppingCart className="w-5 h-5 text-white" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-teal-400 text-teal-950 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
-            </button>
+            </Link>
 
             {/* Mobile Menu - Radix UI DropdownMenu */}
             <DropdownMenu.Root>
