@@ -39,6 +39,14 @@ The project includes Supabase migrations in `supabase/migrations/`:
 - Update timestamp triggers
 
 ## Recent Changes
+- **2024-11-09**: Complete UI redesign to Enki Coop aesthetic
+  - Implemented Alegreya serif typography for all headings
+  - Replaced gray color palette with consistent teal/white theme
+  - Updated all components: Header, Hero, FrameCatalog, ProcessSteps, TrustSection, Footer
+  - Applied light border treatment (teal-200/20) across all cards
+  - Implemented zigzag alternating layout for "Kako funkcioniše?" section with professional stock images
+  - Added responsive images for each step: frames display, delivery, trying at home, decision, and prescription
+  
 - **2024-11-09**: Initial Replit environment setup
   - Configured Vite for Replit (0.0.0.0:5000, allowedHosts: true, WebSocket HMR)
   - Set up Supabase environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY)
