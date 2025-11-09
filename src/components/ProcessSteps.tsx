@@ -47,14 +47,14 @@ export default function ProcessSteps() {
   ];
 
   return (
-    <section id="kako-funkcionise" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="kako-funkcionise" className="py-16 sm:py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-normal text-white mb-4">
             Kako funkcioniše?
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto">
             U samo 5 jednostavnih koraka do vaših savršenih naočala
           </p>
         </div>
@@ -66,23 +66,18 @@ export default function ProcessSteps() {
             return (
               <div
                 key={step.number}
-                className="relative bg-white rounded-md p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                className="relative bg-teal-950/70 rounded-lg p-6 border border-teal-800/50 hover:border-teal-700/80 transition-all duration-300"
               >
-                {/* Step Number Badge */}
-                <div className="absolute -top-3 -left-3 bg-blue-600 text-white w-10 h-10 rounded-sm flex items-center justify-center font-bold text-lg shadow-md">
-                  {step.number}
-                </div>
-
                 {/* Icon */}
-                <div className="mb-4 mt-2">
-                  <Icon className="w-12 h-12 text-blue-600" />
+                <div className="mb-4">
+                  <Icon className="w-10 h-10 text-teal-300" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-lg font-medium text-white mb-3">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-sm text-white/70 mb-4">
                   {step.description}
                 </p>
 
@@ -109,26 +104,23 @@ export default function ProcessSteps() {
               <Accordion.Item
                 key={step.number}
                 value={`step-${step.number}`}
-                className="bg-white rounded-md border border-gray-200 overflow-hidden"
+                className="bg-teal-950/70 rounded-lg border border-teal-800/50 overflow-hidden"
               >
                 <Accordion.Header>
                   <Accordion.Trigger
                     className={cn(
                       "flex items-center justify-between w-full p-4 text-left",
-                      "hover:bg-gray-50 transition-colors",
+                      "hover:bg-teal-900/30 transition-colors",
                       "group"
                     )}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="bg-blue-600 text-white w-8 h-8 rounded-sm flex items-center justify-center font-bold text-sm flex-shrink-0">
-                        {step.number}
-                      </div>
-                      <Icon className="w-8 h-8 text-blue-600 flex-shrink-0" />
-                      <h3 className="font-semibold text-gray-900">
+                      <Icon className="w-7 h-7 text-teal-300 flex-shrink-0" />
+                      <h3 className="font-medium text-white text-sm">
                         {step.title}
                       </h3>
                     </div>
-                    <ChevronDown className="w-5 h-5 text-gray-500 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+                    <ChevronDown className="w-5 h-5 text-white/60 transition-transform duration-300 group-data-[state=open]:rotate-180" />
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Content
@@ -139,11 +131,11 @@ export default function ProcessSteps() {
                   )}
                 >
                   <div className="p-4 pt-0 space-y-3">
-                    <p className="text-gray-600">
+                    <p className="text-sm text-white/70">
                       {step.description}
                     </p>
                     {step.details && (
-                      <p className="text-sm text-gray-500 italic">
+                      <p className="text-xs text-white/60">
                         {step.details}
                       </p>
                     )}

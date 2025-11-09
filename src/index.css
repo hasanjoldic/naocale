@@ -1,9 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
-  --color-blue-500: #3b82f6;
+  /* Primary Colors - Matching Enki Coop teal gradient */
+  --color-teal-950: #0d3d3a;
+  --color-teal-900: #104944;
+  --color-teal-800: #145852;
+  --color-teal-700: #176860;
+  --color-teal-600: #1a7a6f;
+  --color-teal-500: #1d8d7f;
+  --color-teal-400: #3da396;
+  --color-teal-300: #5eb8ad;
+  --color-teal-200: #80cbc4;
+  --color-teal-100: #b2dfdb;
+
+  /* Dark teal backgrounds for content boxes */
+  --color-dark-teal: #0d3d3a;
+  --color-darker-teal: #0a302d;
+
+  /* Dark backgrounds */
+  --color-gray-950: #0a0a0a;
+  --color-gray-900: #121212;
+  --color-gray-800: #1e1e1e;
+
+  /* Typography */
+  --font-serif: 'Alegreya', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 
   /* Animations */
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -54,6 +75,28 @@
 
   .zoom-in-95 {
     animation-name: zoomIn;
+  }
+
+  /* Grain texture effect */
+  .grain {
+    position: relative;
+  }
+
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .grain-light::before {
+    opacity: 0.15;
+  }
+
+  .grain-strong::before {
+    opacity: 0.5;
   }
 }
 

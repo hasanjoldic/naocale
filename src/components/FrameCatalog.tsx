@@ -107,22 +107,22 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
   const canSelectMore = selectedFrames.length < 3;
 
   return (
-    <section id="katalog" className="py-16 sm:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="katalog" className="py-16 sm:py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-normal text-white mb-4">
             Naš katalog
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto">
             Odaberite 3 rama koja želite isprobati kod kuće
           </p>
         </div>
 
         {/* Sticky Selection Counter */}
         <div className="sticky top-20 z-40 mb-8 flex justify-center">
-          <div className="bg-white border-2 border-blue-600 rounded-sm px-6 py-3 shadow-lg">
-            <span className="text-sm font-semibold text-gray-900">
+          <div className="bg-teal-950/80 text-white rounded px-6 py-3 border border-white/20">
+            <span className="text-sm font-medium">
               {selectedFrames.length}/3 odabrano
             </span>
           </div>
@@ -137,27 +137,30 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
               <div
                 key={frame.id}
                 className={cn(
-                  'bg-white rounded-md overflow-hidden border-2 transition-all duration-300',
+                  'bg-teal-950/70 rounded-lg overflow-hidden border transition-all duration-300',
                   selected
-                    ? 'border-blue-600 shadow-xl '
-                    : 'border-gray-200 hover:shadow-lg'
+                    ? 'border-teal-400 shadow-lg'
+                    : 'border-teal-800/50 hover:border-teal-700/80'
                 )}
               >
                 {/* Image */}
-                <div className="relative bg-gray-100 group">
+                <div className="relative bg-gray-100 group overflow-hidden">
                   <img
                     src={frame.image}
                     alt={frame.name}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent opacity-60"></div>
 
                   {/* Quick View Button */}
                   <button
                     onClick={() => setDialogFrame(frame)}
-                    className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                    className="absolute inset-0 bg-teal-900/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                   >
-                    <Eye className="w-8 h-8 text-white" />
-                    <span className="ml-2 text-white font-semibold">Pogledaj detalje</span>
+                    <Eye className="w-7 h-7 text-white" />
+                    <span className="ml-2 text-white font-medium">Pogledaj detalje</span>
                   </button>
 
                   {/* Checkbox */}
@@ -167,15 +170,15 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                       onCheckedChange={(checked) => handleCheckboxChange(frame.id, checked === true)}
                       disabled={!selected && !canSelectMore}
                       className={cn(
-                        "w-8 h-8 rounded-sm flex items-center justify-center border-2 transition-all",
+                        "w-7 h-7 rounded flex items-center justify-center border transition-all",
                         selected
-                          ? "bg-blue-600 border-blue-600"
-                          : "bg-white border-gray-300 hover:border-blue-600",
+                          ? "bg-teal-400 border-teal-400"
+                          : "bg-teal-950/80 border-white/40 hover:border-white/60",
                         !selected && !canSelectMore && "opacity-50 cursor-not-allowed"
                       )}
                     >
                       <Checkbox.Indicator>
-                        <Check className="w-5 h-5 text-white" />
+                        <Check className="w-4 h-4 text-teal-950" />
                       </Checkbox.Indicator>
                     </Checkbox.Root>
                   </div>
@@ -183,35 +186,35 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <h3 className="text-lg font-medium text-white mb-3">
                     {frame.name}
                   </h3>
 
                   {/* Badges */}
                   <div className="flex gap-2 mb-4">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-sm">
+                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
                       {frame.shape}
                     </span>
-                    <span className="px-3 py-1 bg-gray-100 text-gray-800 text-sm font-medium rounded-sm">
+                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
                       {frame.color}
                     </span>
                   </div>
 
                   {/* Price */}
-                  <p className="text-2xl font-bold text-gray-900 mb-4">
+                  <p className="text-xl font-semibold text-white mb-4">
                     {frame.price} KM
                   </p>
 
                   {/* View Details Button */}
                   <button
                     onClick={() => setDialogFrame(frame)}
-                    className="w-full mb-2 py-2 px-4 rounded font-medium text-blue-600 border border-blue-600 hover:bg-blue-50 transition-colors"
+                    className="w-full mb-2 py-2 px-4 rounded text-sm font-medium text-white border border-white/30 hover:bg-teal-900/40 hover:border-white/50 transition-colors"
                   >
                     Pogledaj detalje
                   </button>
 
                   {/* Selection Status */}
-                  <p className="text-center text-sm text-gray-600">
+                  <p className="text-center text-xs text-white/60">
                     {selected ? '✓ Odabrano' : canSelectMore ? 'Klikni na ✓ gore' : 'Maksimum 3 rama'}
                   </p>
                 </div>
@@ -222,8 +225,8 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
 
         {/* Order Button */}
         {selectedFrames.length === 3 && (
-          <div className="mt-12 text-center ">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-12 py-4 rounded shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:">
+          <div className="mt-12 text-center">
+            <button className="bg-teal-950/80 hover:bg-teal-950 text-white font-medium text-base px-10 py-3 rounded border border-white/20 hover:border-white/30 transition-all duration-300">
               Naruči pokušaj
             </button>
           </div>
@@ -233,11 +236,11 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
       {/* Frame Details Dialog */}
       <Dialog.Root open={!!dialogFrame} onOpenChange={(open) => !open && setDialogFrame(null)}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
+          <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" />
           <Dialog.Content
             className={cn(
               "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50",
-              "bg-white rounded-md shadow-2xl",
+              "bg-teal-950/95 backdrop-blur-md rounded-lg shadow-2xl border border-teal-800/50",
               "w-[90vw] max-w-2xl max-h-[85vh] overflow-y-auto",
               "p-6"
             )}
@@ -246,48 +249,52 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
               <>
                 <Dialog.Close asChild>
                   <button
-                    className="absolute top-4 right-4 p-2 rounded hover:bg-gray-100 transition-colors"
+                    className="absolute top-4 right-4 p-2 rounded hover:bg-teal-900/50 transition-colors"
                     aria-label="Zatvori"
                   >
-                    <X className="w-5 h-5 text-gray-700" />
+                    <X className="w-5 h-5 text-white" />
                   </button>
                 </Dialog.Close>
 
-                <Dialog.Title className="text-2xl font-bold text-gray-900 mb-4">
+                <Dialog.Title className="text-xl font-medium text-white mb-4">
                   {dialogFrame.name}
                 </Dialog.Title>
 
-                <img
-                  src={dialogFrame.image}
-                  alt={dialogFrame.name}
-                  className="w-full h-64 object-cover rounded mb-6"
-                />
+                <div className="relative rounded overflow-hidden mb-6">
+                  <img
+                    src={dialogFrame.image}
+                    alt={dialogFrame.name}
+                    className="w-full h-64 object-cover"
+                  />
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent opacity-50"></div>
+                </div>
 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Opis</h3>
-                    <p className="text-gray-600">{dialogFrame.description}</p>
+                    <h3 className="font-medium text-white mb-2 text-sm">Opis</h3>
+                    <p className="text-white/80 text-sm">{dialogFrame.description}</p>
                   </div>
 
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Karakteristike</h3>
+                    <h3 className="font-medium text-white mb-2 text-sm">Karakteristike</h3>
                     <ul className="list-disc list-inside space-y-1">
                       {dialogFrame.features.map((feature, idx) => (
-                        <li key={idx} className="text-gray-600">{feature}</li>
+                        <li key={idx} className="text-white/80 text-sm">{feature}</li>
                       ))}
                     </ul>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-sm">
+                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
                       {dialogFrame.shape}
                     </span>
-                    <span className="px-3 py-1 bg-gray-100 text-gray-800 text-sm font-medium rounded-sm">
+                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
                       {dialogFrame.color}
                     </span>
                   </div>
 
-                  <p className="text-3xl font-bold text-gray-900">
+                  <p className="text-2xl font-semibold text-white">
                     {dialogFrame.price} KM
                   </p>
 
@@ -297,18 +304,18 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                       onCheckedChange={(checked) => handleCheckboxChange(dialogFrame.id, checked === true)}
                       disabled={!isSelected(dialogFrame.id) && !canSelectMore}
                       className={cn(
-                        "w-10 h-10 rounded flex items-center justify-center border-2 transition-all",
+                        "w-8 h-8 rounded flex items-center justify-center border transition-all",
                         isSelected(dialogFrame.id)
-                          ? "bg-blue-600 border-blue-600"
-                          : "bg-white border-gray-300 hover:border-blue-600",
+                          ? "bg-teal-400 border-teal-400"
+                          : "bg-teal-950/80 border-white/40 hover:border-white/60",
                         !isSelected(dialogFrame.id) && !canSelectMore && "opacity-50 cursor-not-allowed"
                       )}
                     >
                       <Checkbox.Indicator>
-                        <Check className="w-6 h-6 text-white" />
+                        <Check className="w-5 h-5 text-teal-950" />
                       </Checkbox.Indicator>
                     </Checkbox.Root>
-                    <span className="text-gray-700 font-medium">
+                    <span className="text-white/80 font-medium text-sm">
                       {isSelected(dialogFrame.id) ? 'Odabrano za pokušaj' : canSelectMore ? 'Dodaj u selekciju' : 'Maksimum 3 rama'}
                     </span>
                   </div>

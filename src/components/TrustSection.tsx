@@ -25,11 +25,20 @@ export default function TrustSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-gradient-to-br from-teal-50 via-white to-gray-50 grain-light relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-teal-300 rounded-full filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-400 rounded-full filter blur-3xl opacity-25 translate-x-1/2 translate-y-1/2"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <div className="inline-block mb-4">
+            <span className="text-sm font-semibold text-white uppercase tracking-widest bg-gradient-to-r from-teal-600 to-teal-700 px-4 py-2 rounded-sm shadow-md">
+              Prednosti
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-gray-900 mb-4">
             Zašto odabrati nas?
           </h2>
         </div>
@@ -41,15 +50,15 @@ export default function TrustSection() {
             return (
               <div
                 key={benefit.title}
-                className="text-center p-6 rounded-md bg-gray-50 border border-gray-200 hover:shadow-lg hover:border-blue-600 transition-all duration-300 group"
+                className="text-center p-6 rounded-md bg-white/80 backdrop-blur-sm border border-teal-200/50 hover:shadow-xl hover:border-teal-400 hover:bg-white transition-all duration-300 group"
               >
                 {/* Icon */}
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-sm mb-4 transition-transform duration-300">
-                  <Icon className="w-8 h-8 text-blue-600" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-sm mb-4 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-teal-600" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold font-serif text-gray-900 mb-2">
                   {benefit.title}
                 </h3>
 

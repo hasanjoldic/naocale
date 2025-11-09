@@ -14,12 +14,12 @@ export default function Header({ cartCount }: HeaderProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <header className="sticky top-0 z-50 bg-teal-950/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-bold text-blue-600">
+            <a href="/" className="text-xl font-normal text-white">
               Naočale.ba
             </a>
           </div>
@@ -30,7 +30,7 @@ export default function Header({ cartCount }: HeaderProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                className="text-white/90 hover:text-white transition-colors text-sm"
               >
                 {link.label}
               </a>
@@ -40,10 +40,10 @@ export default function Header({ cartCount }: HeaderProps) {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
             {/* Shopping Cart */}
-            <button className="relative p-2 rounded hover:bg-gray-100 transition-colors">
-              <ShoppingCart className="w-5 h-5 text-gray-700" />
+            <button className="relative p-2 rounded hover:bg-teal-900/50 transition-colors">
+              <ShoppingCart className="w-5 h-5 text-white" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-sm h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-teal-400 text-teal-950 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -53,18 +53,18 @@ export default function Header({ cartCount }: HeaderProps) {
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button
-                  className="md:hidden p-2 rounded hover:bg-gray-100 transition-colors outline-none"
+                  className="md:hidden p-2 rounded hover:bg-teal-900/50 transition-colors outline-none"
                   aria-label="Toggle menu"
                 >
-                  <Menu className="w-6 h-6 text-gray-700" />
+                  <Menu className="w-6 h-6 text-white" />
                 </button>
               </DropdownMenu.Trigger>
 
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
                   className={cn(
-                    "min-w-[220px] bg-white rounded p-2 shadow-lg",
-                    "border border-gray-200",
+                    "min-w-[220px] bg-teal-900 rounded p-2 shadow-lg",
+                    "border border-teal-700",
                     "animate-in fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2"
                   )}
                   sideOffset={5}
@@ -74,9 +74,9 @@ export default function Header({ cartCount }: HeaderProps) {
                       <a
                         href={link.href}
                         className={cn(
-                          "block px-3 py-2 text-gray-700 rounded-sm",
-                          "hover:bg-blue-50 hover:text-blue-600",
-                          "transition-colors font-medium outline-none cursor-pointer"
+                          "block px-3 py-2 text-white/90 rounded-sm",
+                          "hover:bg-teal-800 hover:text-white",
+                          "transition-colors outline-none cursor-pointer text-sm"
                         )}
                       >
                         {link.label}
