@@ -40,7 +40,12 @@ The project includes Supabase migrations in `supabase/migrations/`:
 
 ## Recent Changes
 - **2024-11-09**: Initial Replit environment setup
-  - Configured Vite for Replit (0.0.0.0:5000, WebSocket HMR)
-  - Set up Supabase environment variables
+  - Configured Vite for Replit (0.0.0.0:5000, allowedHosts: true, WebSocket HMR)
+  - Set up Supabase environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY)
   - Installed all dependencies
-  - Configured development workflow
+  - Configured development workflow on port 5000
+  - Set up deployment configuration for autoscale deployment
+
+## Notes
+- WebSocket HMR warnings in console are normal in Replit environment and don't affect functionality
+- Site is fully functional with hot module reloading working correctly
