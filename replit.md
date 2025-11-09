@@ -47,6 +47,7 @@ The project includes Supabase migrations in `supabase/migrations/`:
   - Success confirmation page after order submission
   - Empty cart state with link to catalog
   - Shopping cart icon in header now navigates to cart page
+  - "Moje narudžbe" navigation link now properly routes to cart page
   - localStorage cleared after successful submission
 
 - **2024-11-09**: Routing and individual product pages

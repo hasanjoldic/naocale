@@ -11,7 +11,7 @@ export default function Header({ cartCount }: HeaderProps) {
   const navLinks = [
     { label: 'Katalog', href: '/katalog', isRoute: true },
     { label: 'Kako funkcioniše', href: '#kako-funkcionise', isRoute: false },
-    { label: 'Moje narudžbe', href: '#narudzbe', isRoute: false },
+    { label: 'Moje narudžbe', href: '/korpa', isRoute: true },
   ];
 
   return (
