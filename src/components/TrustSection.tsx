@@ -1,4 +1,4 @@
-import { Truck, RotateCcw, Award, ShieldCheck } from 'lucide-react';
+import { Truck, RotateCcw, Award, ShieldCheck, Check } from 'lucide-react';
 
 export default function TrustSection() {
   const benefits = [
@@ -26,8 +26,7 @@ export default function TrustSection() {
 
   return (
     <section className="py-16 sm:py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl sm:text-5xl font-serif font-normal text-white mb-4">
             Zašto odabrati nas?
@@ -37,29 +36,31 @@ export default function TrustSection() {
           </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {benefits.map((benefit) => {
             const Icon = benefit.icon;
             return (
               <div
                 key={benefit.title}
-                className="text-center p-6 bg-teal-900/60 backdrop-blur-sm border border-teal-200/20 hover:border-teal-200/30 transition-all duration-300"
+                className="flex items-start gap-4 group"
               >
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
-                  <Icon className="w-8 h-8 text-white" />
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-12 h-12 rounded-full bg-teal-800/40 border border-teal-200/20 flex items-center justify-center group-hover:bg-teal-700/50 transition-colors">
+                    <Check className="w-6 h-6 text-white" />
+                  </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-serif font-normal text-white mb-2">
-                  {benefit.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-white/80 text-sm leading-relaxed">
-                  {benefit.description}
-                </p>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="w-5 h-5 text-teal-300 flex-shrink-0" />
+                    <h3 className="text-lg sm:text-xl font-serif font-normal text-white">
+                      {benefit.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-white/75 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
             );
           })}

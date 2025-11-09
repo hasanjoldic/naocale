@@ -46,6 +46,7 @@ The project includes Supabase migrations in `supabase/migrations/`:
   - Applied light border treatment (teal-200/20) across all cards
   - Implemented zigzag alternating layout for "Kako funkcioniše?" section with professional stock images
   - Added responsive images for each step: frames display, delivery, trying at home, decision, and prescription
+  - Implemented checklist-style layout for "Zašto odabrati nas?" section with circular check marks and icon badges
   
 - **2024-11-09**: Initial Replit environment setup
   - Configured Vite for Replit (0.0.0.0:5000, allowedHosts: true, WebSocket HMR)
