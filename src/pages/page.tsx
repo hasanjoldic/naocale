@@ -1,3 +1,22 @@
+import { useState } from 'react';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import ProcessSteps from '../components/ProcessSteps';
+import FrameCatalog from '../components/FrameCatalog';
+import TrustSection from '../components/TrustSection';
+import Footer from '../components/Footer';
+
 export default function IndexPage() {
-  return <div></div>;
+  const [selectedFrameIds, setSelectedFrameIds] = useState<number[]>([]);
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Header cartCount={selectedFrameIds.length} />
+      <Hero />
+      <ProcessSteps />
+      <FrameCatalog onSelectionChange={setSelectedFrameIds} />
+      <TrustSection />
+      <Footer />
+    </div>
+  );
 }
