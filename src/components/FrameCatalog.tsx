@@ -111,17 +111,17 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-normal text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-serif font-normal text-white mb-4">
             Naš katalog
           </h2>
-          <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto font-light">
             Odaberite 3 rama koja želite isprobati kod kuće
           </p>
         </div>
 
         {/* Sticky Selection Counter */}
         <div className="sticky top-20 z-40 mb-8 flex justify-center">
-          <div className="bg-teal-950/80 text-white rounded px-6 py-3 border border-white/20">
+          <div className="bg-teal-900/80 backdrop-blur-sm text-white px-6 py-3 border border-teal-200/20">
             <span className="text-sm font-medium">
               {selectedFrames.length}/3 odabrano
             </span>
@@ -137,14 +137,14 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
               <div
                 key={frame.id}
                 className={cn(
-                  'bg-teal-950/70 rounded-lg overflow-hidden border transition-all duration-300',
+                  'bg-teal-900/60 backdrop-blur-sm overflow-hidden border transition-all duration-300',
                   selected
                     ? 'border-teal-400 shadow-lg'
-                    : 'border-teal-800/50 hover:border-teal-700/80'
+                    : 'border-teal-200/20 hover:border-teal-200/30'
                 )}
               >
                 {/* Image */}
-                <div className="relative bg-gray-100 group overflow-hidden">
+                <div className="relative bg-teal-950 group overflow-hidden">
                   <img
                     src={frame.image}
                     alt={frame.name}
@@ -152,7 +152,7 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                   />
 
                   {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent opacity-60"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/30 via-transparent to-transparent opacity-60"></div>
 
                   {/* Quick View Button */}
                   <button
@@ -186,16 +186,16 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-lg font-medium text-white mb-3">
+                  <h3 className="text-xl font-serif font-normal text-white mb-3">
                     {frame.name}
                   </h3>
 
                   {/* Badges */}
                   <div className="flex gap-2 mb-4">
-                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
+                    <span className="px-2 py-1 bg-teal-800/40 text-white/90 text-xs font-medium border border-teal-200/20">
                       {frame.shape}
                     </span>
-                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
+                    <span className="px-2 py-1 bg-teal-800/40 text-white/90 text-xs font-medium border border-teal-200/20">
                       {frame.color}
                     </span>
                   </div>
@@ -240,7 +240,7 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
           <Dialog.Content
             className={cn(
               "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50",
-              "bg-teal-950/95 backdrop-blur-md rounded-lg shadow-2xl border border-teal-800/50",
+              "bg-teal-900/95 backdrop-blur-md shadow-2xl border border-teal-200/20",
               "w-[90vw] max-w-2xl max-h-[85vh] overflow-y-auto",
               "p-6"
             )}
@@ -249,52 +249,52 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
               <>
                 <Dialog.Close asChild>
                   <button
-                    className="absolute top-4 right-4 p-2 rounded hover:bg-teal-900/50 transition-colors"
+                    className="absolute top-4 right-4 p-2 hover:bg-teal-800/50 transition-colors"
                     aria-label="Zatvori"
                   >
                     <X className="w-5 h-5 text-white" />
                   </button>
                 </Dialog.Close>
 
-                <Dialog.Title className="text-xl font-medium text-white mb-4">
+                <Dialog.Title className="text-2xl font-serif font-normal text-white mb-4">
                   {dialogFrame.name}
                 </Dialog.Title>
 
-                <div className="relative rounded overflow-hidden mb-6">
+                <div className="relative overflow-hidden mb-6">
                   <img
                     src={dialogFrame.image}
                     alt={dialogFrame.name}
                     className="w-full h-64 object-cover"
                   />
                   {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent opacity-50"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/30 via-transparent to-transparent opacity-50"></div>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium text-white mb-2 text-sm">Opis</h3>
-                    <p className="text-white/80 text-sm">{dialogFrame.description}</p>
+                    <h3 className="font-serif font-normal text-white mb-2 text-base">Opis</h3>
+                    <p className="text-white/85 text-sm leading-relaxed">{dialogFrame.description}</p>
                   </div>
 
                   <div>
-                    <h3 className="font-medium text-white mb-2 text-sm">Karakteristike</h3>
+                    <h3 className="font-serif font-normal text-white mb-2 text-base">Karakteristike</h3>
                     <ul className="list-disc list-inside space-y-1">
                       {dialogFrame.features.map((feature, idx) => (
-                        <li key={idx} className="text-white/80 text-sm">{feature}</li>
+                        <li key={idx} className="text-white/85 text-sm">{feature}</li>
                       ))}
                     </ul>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
+                    <span className="px-2 py-1 bg-teal-800/40 text-white/90 text-xs font-medium border border-teal-200/20">
                       {dialogFrame.shape}
                     </span>
-                    <span className="px-2 py-1 bg-teal-900/40 text-teal-200 text-xs font-medium rounded border border-teal-700/40">
+                    <span className="px-2 py-1 bg-teal-800/40 text-white/90 text-xs font-medium border border-teal-200/20">
                       {dialogFrame.color}
                     </span>
                   </div>
 
-                  <p className="text-2xl font-semibold text-white">
+                  <p className="text-2xl font-serif font-normal text-white">
                     {dialogFrame.price} KM
                   </p>
 
@@ -304,7 +304,7 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                       onCheckedChange={(checked) => handleCheckboxChange(dialogFrame.id, checked === true)}
                       disabled={!isSelected(dialogFrame.id) && !canSelectMore}
                       className={cn(
-                        "w-8 h-8 rounded flex items-center justify-center border transition-all",
+                        "w-8 h-8 flex items-center justify-center border transition-all",
                         isSelected(dialogFrame.id)
                           ? "bg-teal-400 border-teal-400"
                           : "bg-teal-950/80 border-white/40 hover:border-white/60",
@@ -315,7 +315,7 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
                         <Check className="w-5 h-5 text-teal-950" />
                       </Checkbox.Indicator>
                     </Checkbox.Root>
-                    <span className="text-white/80 font-medium text-sm">
+                    <span className="text-white/85 font-normal text-sm">
                       {isSelected(dialogFrame.id) ? 'Odabrano za pokušaj' : canSelectMore ? 'Dodaj u selekciju' : 'Maksimum 3 rama'}
                     </span>
                   </div>

@@ -51,10 +51,10 @@ export default function ProcessSteps() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-normal text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-serif font-normal text-white mb-4">
             Kako funkcioniše?
           </h2>
-          <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto font-light">
             U samo 5 jednostavnih koraka do vaših savršenih naočala
           </p>
         </div>
@@ -66,24 +66,24 @@ export default function ProcessSteps() {
             return (
               <div
                 key={step.number}
-                className="relative bg-teal-950/70 rounded-lg p-6 border border-teal-800/50 hover:border-teal-700/80 transition-all duration-300"
+                className="relative bg-teal-900/60 backdrop-blur-sm p-6 border border-teal-200/20 hover:border-teal-200/30 transition-all duration-300"
               >
                 {/* Icon */}
                 <div className="mb-4">
-                  <Icon className="w-10 h-10 text-teal-300" />
+                  <Icon className="w-10 h-10 text-white" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-medium text-white mb-3">
+                <h3 className="text-xl font-serif font-normal text-white mb-3">
                   {step.title}
                 </h3>
-                <p className="text-sm text-white/70 mb-4">
+                <p className="text-sm text-white/80 mb-4 leading-relaxed">
                   {step.description}
                 </p>
 
                 {/* Optional Image */}
                 {step.image && (
-                  <div className="mt-4 rounded overflow-hidden">
+                  <div className="mt-4 overflow-hidden">
                     <img
                       src={step.image}
                       alt={step.title}
@@ -104,19 +104,19 @@ export default function ProcessSteps() {
               <Accordion.Item
                 key={step.number}
                 value={`step-${step.number}`}
-                className="bg-teal-950/70 rounded-lg border border-teal-800/50 overflow-hidden"
+                className="bg-teal-900/60 backdrop-blur-sm border border-teal-200/20 overflow-hidden"
               >
                 <Accordion.Header>
                   <Accordion.Trigger
                     className={cn(
                       "flex items-center justify-between w-full p-4 text-left",
-                      "hover:bg-teal-900/30 transition-colors",
+                      "hover:bg-teal-800/30 transition-colors",
                       "group"
                     )}
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className="w-7 h-7 text-teal-300 flex-shrink-0" />
-                      <h3 className="font-medium text-white text-sm">
+                      <Icon className="w-7 h-7 text-white flex-shrink-0" />
+                      <h3 className="font-serif font-normal text-white text-base">
                         {step.title}
                       </h3>
                     </div>
@@ -131,16 +131,16 @@ export default function ProcessSteps() {
                   )}
                 >
                   <div className="p-4 pt-0 space-y-3">
-                    <p className="text-sm text-white/70">
+                    <p className="text-sm text-white/80 leading-relaxed">
                       {step.description}
                     </p>
                     {step.details && (
-                      <p className="text-xs text-white/60">
+                      <p className="text-xs text-white/70">
                         {step.details}
                       </p>
                     )}
                     {step.image && (
-                      <div className="rounded overflow-hidden">
+                      <div className="overflow-hidden">
                         <img
                           src={step.image}
                           alt={step.title}

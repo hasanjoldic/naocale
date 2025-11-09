@@ -20,20 +20,16 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 text-gray-300 grain overflow-hidden">
-      {/* Decorative teal glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-600/20 rounded-full filter blur-3xl opacity-40"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-500/10 rounded-full filter blur-3xl opacity-30"></div>
-
+    <footer className="relative bg-teal-950 border-t border-teal-800/30 text-white/80 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand Info */}
           <div>
-            <h3 className="text-2xl font-bold font-serif text-white mb-4">Naočale.ba</h3>
-            <p className="text-gray-400 mb-4">
+            <h3 className="text-2xl font-serif font-normal text-white mb-4">Naočale.ba</h3>
+            <p className="text-white/70 mb-4 text-sm leading-relaxed">
               Vaš pouzdan partner za kvalitetne naočale. Isprobajte kod kuće prije nego što kupite.
             </p>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-white/60 mb-6">
               Certificirani optičar sa višegodišnjim iskustvom u Bosni i Hercegovini.
             </p>
 
@@ -46,7 +42,7 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="p-2 bg-gray-800/60 border border-gray-700/50 hover:bg-teal-600 hover:border-teal-500 rounded transition-all"
+                    className="p-2 bg-teal-900/60 border border-teal-200/20 hover:bg-teal-800 hover:border-teal-200/30 transition-all"
                   >
                     <Icon className="w-5 h-5" />
                   </a>
@@ -57,13 +53,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold font-serif text-white mb-4">Brzi linkovi</h4>
+            <h4 className="text-lg font-serif font-normal text-white mb-4">Brzi linkovi</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-teal-400 transition-colors inline-block"
+                    className="text-white/70 hover:text-white transition-colors inline-block text-sm"
                   >
                     {link.label}
                   </a>
@@ -74,29 +70,29 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div id="kontakt">
-            <h4 className="text-lg font-semibold font-serif text-white mb-4">Kontakt</h4>
+            <h4 className="text-lg font-serif font-normal text-white mb-4">Kontakt</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:info@naocale.ba"
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
                 >
                   info@naocale.ba
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
                 <a
                   href="tel:+38733123456"
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
                 >
                   +387 33 123 456
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
-                <address className="text-gray-400 not-italic">
+                <MapPin className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
+                <address className="text-white/70 not-italic text-sm">
                   Ferhadija 15<br />
                   71000 Sarajevo<br />
                   Bosna i Hercegovina
@@ -107,19 +103,19 @@ export default function Footer() {
         </div>
 
         {/* Separator */}
-        <Separator.Root className="bg-gray-800 h-px my-8" />
+        <Separator.Root className="bg-teal-800/30 h-px my-8" />
 
         {/* Copyright and Additional Info */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm text-center sm:text-left">
+          <p className="text-white/60 text-sm text-center sm:text-left">
             © {currentYear} Naočale.ba. Sva prava zadržana.
           </p>
           <div className="flex gap-4 text-sm">
-            <a href="#" className="text-gray-500 hover:text-teal-400 transition-colors">
+            <a href="#" className="text-white/60 hover:text-white transition-colors">
               Uvjeti korištenja
             </a>
-            <Separator.Root decorative orientation="vertical" className="bg-gray-700 w-px h-4" />
-            <a href="#" className="text-gray-500 hover:text-teal-400 transition-colors">
+            <Separator.Root decorative orientation="vertical" className="bg-teal-800/30 w-px h-4" />
+            <a href="#" className="text-white/60 hover:text-white transition-colors">
               Privatnost
             </a>
           </div>

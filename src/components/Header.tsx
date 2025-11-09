@@ -14,12 +14,12 @@ export default function Header({ cartCount }: HeaderProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-teal-950/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 bg-teal-900/98 backdrop-blur-sm border-b border-teal-800/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-xl font-normal text-white">
+            <a href="/" className="text-2xl font-serif font-normal text-white tracking-wide">
               Naočale.ba
             </a>
           </div>
@@ -30,7 +30,7 @@ export default function Header({ cartCount }: HeaderProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-white/90 hover:text-white transition-colors text-sm"
+                className="text-white/90 hover:text-white transition-colors text-sm font-normal"
               >
                 {link.label}
               </a>
@@ -63,8 +63,8 @@ export default function Header({ cartCount }: HeaderProps) {
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
                   className={cn(
-                    "min-w-[220px] bg-teal-900 rounded p-2 shadow-lg",
-                    "border border-teal-700",
+                    "min-w-[220px] bg-teal-900/95 backdrop-blur-sm shadow-lg",
+                    "border border-teal-200/20",
                     "animate-in fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2"
                   )}
                   sideOffset={5}
@@ -74,8 +74,8 @@ export default function Header({ cartCount }: HeaderProps) {
                       <a
                         href={link.href}
                         className={cn(
-                          "block px-3 py-2 text-white/90 rounded-sm",
-                          "hover:bg-teal-800 hover:text-white",
+                          "block px-3 py-2 text-white/90 hover:text-white",
+                          "hover:bg-teal-800/50",
                           "transition-colors outline-none cursor-pointer text-sm"
                         )}
                       >

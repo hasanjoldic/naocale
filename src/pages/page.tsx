@@ -10,7 +10,7 @@ export default function IndexPage() {
   const [selectedFrameIds, setSelectedFrameIds] = useState<number[]>([]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-700 via-teal-600 to-teal-500">
+    <div className="min-h-screen bg-gradient-to-br from-teal-700 via-teal-600 to-teal-500">
       <Header cartCount={selectedFrameIds.length} />
       <Hero />
       <ProcessSteps />
