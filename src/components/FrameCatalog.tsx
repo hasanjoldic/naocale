@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check, Eye, X } from 'lucide-react';
+import { Check, Eye, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Dialog from '@radix-ui/react-dialog';
 import { cn } from '../lib/utils';
@@ -22,6 +22,8 @@ interface FrameCatalogProps {
 export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
   const [selectedFrames, setSelectedFrames] = useState<number[]>([]);
   const [dialogFrame, setDialogFrame] = useState<Frame | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   const frames: Frame[] = [
     {
@@ -84,7 +86,102 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
       description: 'Vintage okrugle naočale u braon boji. Za ljubitelje retro stila.',
       features: ['Vintage stil', 'Premium kvalitet', 'Unikatne'],
     },
+    {
+      id: 7,
+      name: 'Minimalist Metal',
+      image: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=400&auto=format&fit=crop',
+      shape: 'Pravougaonik',
+      color: 'Srebrna',
+      price: 199,
+      description: 'Minimalističke metalne naočale sa tankim okvirom. Jednostavna elegancija.',
+      features: ['Metalni okvir', 'Elegantne', 'Izdržljive'],
+    },
+    {
+      id: 8,
+      name: 'Bold Cat-Eye',
+      image: 'https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=400&auto=format&fit=crop',
+      shape: 'Cat-eye',
+      color: 'Crvena',
+      price: 175,
+      description: 'Hrabre cat-eye naočale u crvenoj boji. Za one koji vole da se istaknu.',
+      features: ['Statement komad', 'Intenzivna boja', 'Moderan dizajn'],
+    },
+    {
+      id: 9,
+      name: 'Wayfare Classic',
+      image: 'https://images.unsplash.com/photo-1501696461415-6bd6660c6742?q=80&w=400&auto=format&fit=crop',
+      shape: 'Wayfare',
+      color: 'Crna',
+      price: 159,
+      description: 'Klasične wayfare naočale u crnoj boji. Bezvremenska ikona stila.',
+      features: ['Klasik dizajn', 'Univerzalne', 'Trajne'],
+    },
+    {
+      id: 10,
+      name: 'Clear Frame',
+      image: 'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?q=80&w=400&auto=format&fit=crop',
+      shape: 'Okrugla',
+      color: 'Prozirna',
+      price: 145,
+      description: 'Prozirne okrugle naočale. Suptilan i moderan izbor.',
+      features: ['Proziran okvir', 'Moderno', 'Lagane'],
+    },
+    {
+      id: 11,
+      name: 'Double Bridge',
+      image: 'https://images.unsplash.com/photo-1609783758745-5f2f78b97d65?q=80&w=400&auto=format&fit=crop',
+      shape: 'Aviator',
+      color: 'Zlatna',
+      price: 195,
+      description: 'Aviator sa duplim mostom. Premium kvalitet i moderan izgled.',
+      features: ['Dupli most', 'Metalni okvir', 'Premium'],
+    },
+    {
+      id: 12,
+      name: 'Square Bold',
+      image: 'https://images.unsplash.com/photo-1628114912544-f0c7f5c1c7ce?q=80&w=400&auto=format&fit=crop',
+      shape: 'Kvadrat',
+      color: 'Crna',
+      price: 169,
+      description: 'Hrabri kvadratni okvir. Statement za savremeni izgled.',
+      features: ['Smeli dizajn', 'Savremeno', 'Kvalitetno'],
+    },
+    {
+      id: 13,
+      name: 'Geometric Hex',
+      image: 'https://images.unsplash.com/photo-1580833129824-c5c27e3f3d91?q=80&w=400&auto=format&fit=crop',
+      shape: 'Šestougao',
+      color: 'Zlatna',
+      price: 185,
+      description: 'Geometrijske šestougaone naočale. Jedinstven i moderan dizajn.',
+      features: ['Geometrijski dizajn', 'Unikatne', 'Moderan stil'],
+    },
+    {
+      id: 14,
+      name: 'Clubmaster Style',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=400&auto=format&fit=crop',
+      shape: 'Clubmaster',
+      color: 'Tortoise/Zlatna',
+      price: 179,
+      description: 'Clubmaster stil sa kombinacijom tortoise i zlatne. Klasična sofisticiranost.',
+      features: ['Retro-moderan', 'Premium materijali', 'Ikonski dizajn'],
+    },
+    {
+      id: 15,
+      name: 'Thin Rim Square',
+      image: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=400&auto=format&fit=crop',
+      shape: 'Kvadrat',
+      color: 'Srebrna',
+      price: 155,
+      description: 'Tanki kvadratni okvir u srebrnoj boji. Minimalistički elegantno.',
+      features: ['Tanak okvir', 'Elegantno', 'Lako'],
+    },
   ];
+
+  const totalPages = Math.ceil(frames.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentFrames = frames.slice(startIndex, endIndex);
 
   const handleCheckboxChange = (frameId: number, checked: boolean) => {
     setSelectedFrames((prev) => {
@@ -105,6 +202,14 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
 
   const isSelected = (frameId: number) => selectedFrames.includes(frameId);
   const canSelectMore = selectedFrames.length < 3;
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    const catalogElement = document.getElementById('katalog');
+    if (catalogElement) {
+      catalogElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="katalog" className="py-16 sm:py-24 relative overflow-hidden">
@@ -130,7 +235,7 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
 
         {/* Frames Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {frames.map((frame) => {
+          {currentFrames.map((frame) => {
             const selected = isSelected(frame.id);
 
             return (
@@ -222,6 +327,54 @@ export default function FrameCatalog({ onSelectionChange }: FrameCatalogProps) {
             );
           })}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-2">
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={cn(
+                "p-2 border border-teal-200/20 transition-all",
+                currentPage === 1
+                  ? "opacity-50 cursor-not-allowed text-white/40"
+                  : "text-white hover:bg-teal-900/40 hover:border-teal-200/30"
+              )}
+              aria-label="Prethodna stranica"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => goToPage(page)}
+                className={cn(
+                  "w-10 h-10 border transition-all text-sm font-medium",
+                  currentPage === page
+                    ? "bg-teal-600 border-teal-600 text-white"
+                    : "border-teal-200/20 text-white hover:bg-teal-900/40 hover:border-teal-200/30"
+                )}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={cn(
+                "p-2 border border-teal-200/20 transition-all",
+                currentPage === totalPages
+                  ? "opacity-50 cursor-not-allowed text-white/40"
+                  : "text-white hover:bg-teal-900/40 hover:border-teal-200/30"
+              )}
+              aria-label="Sljedeća stranica"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
 
         {/* Order Button */}
         {selectedFrames.length === 3 && (
