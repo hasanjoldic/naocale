@@ -39,6 +39,16 @@ The project includes Supabase migrations in `supabase/migrations/`:
 - Update timestamp triggers
 
 ## Recent Changes
+- **2024-11-09**: Cart/checkout page with customer form
+  - Created cart page at /korpa route with full checkout flow
+  - Displays selected frames with ability to remove items (updates localStorage)
+  - Customer information form with validation (name, email, phone, address)
+  - Form validation with localized error messages
+  - Success confirmation page after order submission
+  - Empty cart state with link to catalog
+  - Shopping cart icon in header now navigates to cart page
+  - localStorage cleared after successful submission
+
 - **2024-11-09**: Routing and individual product pages
   - Created dedicated catalog page at /katalog route
   - Created individual product pages at /proizvod/:id with shareable URLs
@@ -47,6 +57,7 @@ The project includes Supabase migrations in `supabase/migrations/`:
   - Implemented localStorage for persistent selection state across all pages
   - Added share functionality on product pages (native share API + clipboard fallback)
   - Centralized frames data in src/data/frames.ts for consistency
+  - Removed "Slični proizvodi" section from product pages
 
 - **2024-11-09**: Catalog expansion and pagination
   - Expanded catalog from 6 to 15 eyeglasses products
