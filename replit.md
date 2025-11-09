@@ -47,6 +47,8 @@ The project includes Supabase migrations in `supabase/migrations/`:
   - Implemented zigzag alternating layout for "Kako funkcioniše?" section with professional stock images
   - Added responsive images for each step: frames display, delivery, trying at home, decision, and prescription
   - Implemented checklist-style layout for "Zašto odabrati nas?" section with circular check marks and icon badges
+  - Added hero background image showcasing eyeglasses collection with teal gradient overlay
+  - Removed social media links from footer
   
 - **2024-11-09**: Initial Replit environment setup
   - Configured Vite for Replit (0.0.0.0:5000, allowedHosts: true, WebSocket HMR)

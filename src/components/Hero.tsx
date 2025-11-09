@@ -9,9 +9,20 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-teal-900 via-teal-700 to-teal-600 py-24 sm:py-32 flex items-center overflow-hidden min-h-[60vh] grain">
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero-option-2.jpg"
+          alt="Kolekcija naočala"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/90 via-teal-800/85 to-teal-700/80"></div>
+        <div className="absolute inset-0 grain"></div>
+      </div>
+
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center py-24 sm:py-32">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-white mb-6 leading-tight">
             Probajte 3 rama besplatno kod kuće
@@ -21,7 +32,7 @@ export default function Hero() {
           </p>
           <button
             onClick={scrollToCatalog}
-            className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white px-10 py-4 text-base font-normal transition-all duration-200 border border-white/20"
+            className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-10 py-4 text-base font-normal hover:bg-white hover:text-teal-900 transition-all duration-300"
           >
             Počnite odmah
             <ArrowRight className="w-5 h-5" />
