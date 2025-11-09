@@ -73,10 +73,6 @@ export default function ProductPage() {
     }
   };
 
-  const relatedFrames = frames.filter(
-    (f) => f.id !== frame.id && (f.shape === frame.shape || f.color === frame.color)
-  ).slice(0, 3);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-900 via-teal-700 to-teal-600">
       <Header cartCount={selectedFrames.length} />
@@ -92,7 +88,7 @@ export default function ProductPage() {
         </button>
 
         {/* Product Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Image */}
           <div className="bg-teal-900/60 backdrop-blur-sm border border-teal-200/20 overflow-hidden">
             <img
@@ -178,40 +174,6 @@ export default function ProductPage() {
             </button>
           </div>
         </div>
-
-        {/* Related Products */}
-        {relatedFrames.length > 0 && (
-          <div>
-            <h2 className="text-3xl font-serif font-normal text-white mb-8">
-              Slični proizvodi
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedFrames.map((relatedFrame) => (
-                <Link
-                  key={relatedFrame.id}
-                  to={`/proizvod/${relatedFrame.id}`}
-                  className="bg-teal-900/60 backdrop-blur-sm border border-teal-200/20 hover:border-teal-200/30 transition-all overflow-hidden group"
-                >
-                  <div className="relative bg-teal-950 overflow-hidden">
-                    <img
-                      src={relatedFrame.image}
-                      alt={relatedFrame.name}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-serif text-white mb-2">
-                      {relatedFrame.name}
-                    </h3>
-                    <p className="text-2xl font-serif text-teal-300">
-                      {relatedFrame.price} KM
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       <Footer />

@@ -46,7 +46,6 @@ The project includes Supabase migrations in `supabase/migrations/`:
   - Updated Header navigation to use React Router Links for proper routing
   - Implemented localStorage for persistent selection state across all pages
   - Added share functionality on product pages (native share API + clipboard fallback)
-  - Added related products section on each product page (filtered by shape/color)
   - Centralized frames data in src/data/frames.ts for consistency
 
 - **2024-11-09**: Catalog expansion and pagination
