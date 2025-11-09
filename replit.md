@@ -39,6 +39,13 @@ The project includes Supabase migrations in `supabase/migrations/`:
 - Update timestamp triggers
 
 ## Recent Changes
+- **2024-11-09**: Catalog expansion and pagination
+  - Expanded catalog from 6 to 15 eyeglasses products
+  - Implemented pagination system (9 products per page)
+  - Added navigation controls with ChevronLeft/Right icons and page numbers
+  - Selection state persists across pagination (can select from multiple pages)
+  - Smooth scroll-to-top on page navigation
+
 - **2024-11-09**: Complete UI redesign to Enki Coop aesthetic
   - Implemented Alegreya serif typography for all headings
   - Replaced gray color palette with consistent teal/white theme
